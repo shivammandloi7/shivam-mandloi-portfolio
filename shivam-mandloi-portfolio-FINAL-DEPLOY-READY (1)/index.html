@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shivam Mandloi | B.Tech CSE Student &amp; Aspiring Software Engineer</title>
+  <meta name="description" content="Interactive developer portfolio of Shivam Mandloi, third-year B.Tech Computer Science Engineering student at INDORE INSTITUTE OF SCIENCE OF TECHNOLOGY." />
+  <meta property="og:title" content="Shivam Mandloi | B.Tech CSE Student &amp; Aspiring Software Engineer" />
+  <meta property="og:description" content="Interactive developer portfolio of Shivam Mandloi featuring Kapda Bazaar, BIS360, skills, and hackathon participation." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f3428'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='26' fill='%23faf7f2'%3ESM%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    if (typeof tailwind !== 'undefined') {
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ['Fraunces', 'Georgia', 'serif'],
+              sans: ['Plus Jakarta Sans', 'system-ui', '-apple-system', 'sans-serif'],
+              mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+            },
+            colors: {
+              cream: '#FAF7F2',
+              sand: '#F2ECE1',
+              ivory: '#FFFDF9',
+              forest: '#0F3428',
+              forestSoft: '#194D3C',
+              emeraldBrand: '#059669',
+              ink: '#1A241F',
+              moss: '#4A5B52',
+            },
+          },
+        },
+      };
+    }
+  </script>
+
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    html, body {
+      background-color: #FAF7F2;
+      color: #1A241F;
+      overflow-x: hidden;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    .bg-botanical-dots {
+      background-image: radial-gradient(rgba(15, 52, 40, 0.085) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    #scroll-progress {
+      transform-origin: left center;
+      transform: scaleX(0);
+      will-change: transform;
+    }
+
+    #cursor-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 340px;
+      height: 340px;
+      border-radius: 9999px;
+      pointer-events: none;
+      z-index: 5;
+      opacity: 0;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.11) 0%, rgba(15, 52, 40, 0.03) 42%, transparent 72%);
+      transform: translate3d(-999px, -999px, 0);
+      will-change: transform, opacity;
+      transition: opacity 0.35s ease;
+    }
+
+    @keyframes orbDriftA {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(26px, -18px, 0) scale(1.06); }
+    }
+    @keyframes orbDriftB {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(-22px, 20px, 0) scale(1.05); }
+    }
+    @keyframes spinOrbit {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes spinOrbitReverse {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+    @keyframes textileFlow {
+      0% { stroke-dashoffset: 48; }
+      100% { stroke-dashoffset: 0; }
+    }
+    @keyframes textileFloat {
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(6px, -7px, 0); }
+    }
+    @keyframes complianceScan {
+      0% { transform: translateY(-20%); opacity: 0; }
+      15% { opacity: 0.9; }
+      85% { opacity: 0.9; }
+      100% { transform: translateY(520%); opacity: 0; }
+    }
+    @keyframes dataPulse {
+      0%, 100% { opacity: 0.35; transform: scale(1); }
+      50% { opacity: 0.9; transform: scale(1.25); }
+    }
+
+    .orb-a { animation: orbDriftA 15s ease-in-out infinite; }
+    .orb-b { animation: orbDriftB 18s ease-in-out infinite; }
+    .orbit-ring { animation: spinOrbit 28s linear infinite; }
+    .orbit-ring-rev { animation: spinOrbitReverse 22s linear infinite; }
+    .textile-dash { stroke-dasharray: 6 6; animation: textileFlow 4.5s linear infinite; }
+    .textile-node-float { animation: textileFloat 6s ease-in-out infinite; }
+    .bis-scan-beam { animation: complianceScan 4.8s ease-in-out infinite; }
+    .bis-pulse { animation: dataPulse 2.8s ease-in-out infinite; }
+
+    .char-wrap {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: bottom;
+      line-height: 1.08;
+      padding-bottom: 0.04em;
+    }
+    .char-inner {
+      display: inline-block;
+      will-change: transform, opacity;
+    }
+
+    /* Always visible by default; GSAP enhances entrance without ever trapping opacity:0 */
+    .heading-underline {
+      transform-origin: left center;
+      transform: scaleX(1);
+    }
+
+    .editorial-card {
+      background: #FFFDF9;
+      border: 1px solid #E5DDD0;
+      border-radius: 1.5rem;
+      box-shadow: 0 2px 10px -4px rgba(15, 52, 40, 0.06), 0 12px 30px -16px rgba(15, 52, 40, 0.09);
+      transition: border-color 0.25s ease, box-shadow 0.3s ease;
+    }
+    .editorial-card:hover {
+      border-color: rgba(5, 150, 105, 0.5);
+      box-shadow: 0 22px 44px -18px rgba(15, 52, 40, 0.16), 0 0 0 1px rgba(5, 150, 105, 0.15);
+    }
+
+    /* Guaranteed visible, high-contrast skill pills even before any scroll/animation */
+    .skill-badges-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.625rem;
+      margin-top: 1.25rem;
+    }
+    .skill-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.42rem 0.9rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(5, 150, 105, 0.26);
+      background-color: #ECFDF5;
+      color: #0F3428;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      line-height: 1.25;
+      opacity: 1;
+      visibility: visible;
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .skill-badge:hover {
+      transform: translateY(-2px);
+      background-color: #D1FAE5;
+      border-color: #059669;
+      box-shadow: 0 4px 12px -4px rgba(5, 150, 105, 0.25);
+    }
+
+    .tilt-card {
+      transform-style: preserve-3d;
+      will-change: transform;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .tilt-card-sheen {
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      opacity: 0;
+      transition: opacity 0.28s ease;
+      background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(16, 185, 129, 0.14), transparent 58%);
+    }
+    .tilt-card:hover .tilt-card-sheen { opacity: 1; }
+
+    .project-img-reveal { will-change: clip-path, transform, opacity; }
+    .img-parallax-fg {
+      will-change: transform;
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    #hero-visual-stage { perspective: 1100px; }
+    #hero-visual-3d { transform-style: preserve-3d; will-change: transform; }
+
+    .nav-item { position: relative; }
+    .nav-item::after {
+      content: '';
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 4px;
+      height: 2px;
+      border-radius: 9999px;
+      background: #059669;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .nav-item:hover::after,
+    .nav-item.active::after { transform: scaleX(1); }
+    .nav-item.active {
+      color: #0F3428;
+      background-color: #E6F4EE;
+    }
+
+    .magnetic-btn {
+      will-change: transform;
+      transition: background-color 0.22s ease, border-color 0.22s ease, box-shadow 0.25s ease;
+    }
+
+    #mobile-menu {
+      max-height: 0;
+      opacity: 0;
+      transform: translateY(-8px);
+      pointer-events: none;
+      transition: max-height 0.32s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.24s ease, transform 0.28s ease;
+    }
+    #mobile-menu.open {
+      max-height: 440px;
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    #back-to-top {
+      opacity: 0;
+      transform: translateY(14px) scale(0.92);
+      pointer-events: none;
+      transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.2s ease;
+    }
+    #back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    @media (max-width: 768px) {
+      #cursor-glow { display: none !important; }
+      .orb-a, .orb-b { animation: none !important; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto !important; }
+      #cursor-glow { display: none !important; }
+      .orb-a, .orb-b, .orbit-ring, .orbit-ring-rev, .textile-dash, .textile-node-float, .bis-scan-beam, .bis-pulse {
+        animation: none !important;
+      }
+      .tilt-card, .magnetic-btn, .editorial-card { transition: none !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body class="bg-cream text-ink antialiased selection:bg-emerald-200/70 selection:text-forest">
+
+  <!-- TOP SCROLL PROGRESS INDICATOR -->
+  <div aria-hidden="true" class="fixed inset-x-0 top-0 z-50 h-[3px] bg-forest/5">
+    <div id="scroll-progress" class="h-full w-full bg-gradient-to-r from-forest via-emerald-600 to-emerald-400"></div>
+  </div>
+
+  <!-- DESKTOP CURSOR-FOLLOWING GLOW -->
+  <div id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- ANIMATED WARM-CREAM, FOREST-GREEN & EMERALD BACKGROUND -->
+  <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-botanical-dots">
+    <div id="bg-orb-1" class="orb-a absolute -left-24 -top-20 h-[480px] w-[480px] rounded-full bg-[radial-gradient(circle,rgba(5,150,105,0.13),transparent_68%)]"></div>
+    <div id="bg-orb-2" class="orb-b absolute -right-24 top-[22%] h-[440px] w-[440px] rounded-full bg-[radial-gradient(circle,rgba(15,52,40,0.09),transparent_70%)]"></div>
+    <div id="bg-orb-3" class="orb-a absolute bottom-0 left-[28%] h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,rgba(16,185,129,0.08),transparent_70%)]"></div>
+
+    <div id="geo-shape-1" class="hidden md:block absolute right-[8%] top-28 h-24 w-24 rounded-3xl border border-emerald-700/20 bg-emerald-500/[0.04] rotate-12"></div>
+    <div id="geo-shape-2" class="hidden md:block absolute left-[6%] top-[430px] h-16 w-16 rounded-full border border-forest/20"></div>
+    <div id="geo-shape-3" class="hidden lg:block absolute right-[18%] top-[560px] h-10 w-10 rounded-xl border border-emerald-600/25 bg-ivory/70 -rotate-12"></div>
+  </div>
+
+  <!-- INTERACTIVE FLOATING NAVBAR -->
+  <header id="site-header" class="sticky top-0 z-40 px-4 pt-3 transition-all duration-300 sm:px-6">
+    <nav id="site-nav" aria-label="Primary Navigation" class="mx-auto flex max-w-6xl items-center justify-between rounded-2xl border border-[#E5DDD0]/90 bg-[#FFFDF9]/85 px-4 py-2.5 shadow-sm backdrop-blur-md transition-all duration-300 sm:px-6">
+      <a href="#home" class="group flex items-center gap-2.5 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600">
+        <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-forest font-display text-sm font-bold text-cream shadow-sm transition-transform duration-300 group-hover:scale-105 group-hover:bg-forestSoft">SM</span>
+        <span class="font-display text-base font-semibold tracking-tight text-forest sm:text-lg">Shivam Mandloi</span>
+      </a>
+
+      <div class="hidden items-center gap-1 lg:flex">
+        <a href="#home" data-nav="home" class="nav-item active rounded-xl px-3.5 py-2 text-sm font-medium text-moss transition-colors hover:text-forest">Home</a>
+        <a href="#about" data-nav="about" class="nav-item rounded-xl px-3.5 py-2 text-sm font-medium text-moss transition-colors hover:text-forest">About</a>
+        <a href="#skills" data-nav="skills" class="nav-item rounded-xl px-3.5 py-2 text-sm font-medium text-moss transition-colors hover:text-forest">Skills</a>
+        <a href="#projects" data-nav="projects" class="nav-item rounded-xl px-3.5 py-2 text-sm font-medium text-moss transition-colors hover:text-forest">Projects</a>
+        <a href="#education" data-nav="education" class="nav-item rounded-xl px-3.5 py-2 text-sm font-medium text-moss transition-colors hover:text-forest">Education</a>
+        <a href="#hackathon" data-nav="hackathon" class="nav-item rounded-xl px-3.5 py-2 text-sm font-medium text-moss transition-colors hover:text-forest">Hackathon</a>
+        <a href="#interests" data-nav="interests" class="nav-item rounded-xl px-3.5 py-2 text-sm font-medium text-moss transition-colors hover:text-forest">Interests</a>
+        <a href="#contact" data-nav="contact" class="nav-item rounded-xl px-3.5 py-2 text-sm font-medium text-moss transition-colors hover:text-forest">Contact</a>
+      </div>
+
+      <button
+        id="mobile-menu-btn"
+        type="button"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[#DFD6C7] bg-ivory text-forest transition-colors hover:border-emerald-600/40 hover:bg-emerald-50 lg:hidden"
+      >
+        <svg id="icon-open" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+        <svg id="icon-close" class="hidden h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </nav>
+
+    <div id="mobile-menu" class="mx-auto mt-2 max-w-6xl overflow-hidden rounded-2xl border border-[#E5DDD0] bg-[#FFFDF9]/95 px-3 shadow-lg backdrop-blur-md lg:hidden">
+      <div class="flex flex-col space-y-1 py-3">
+        <a href="#home" class="mobile-link flex min-h-[44px] items-center rounded-xl px-4 text-sm font-medium text-forest hover:bg-emerald-50">Home</a>
+        <a href="#about" class="mobile-link flex min-h-[44px] items-center rounded-xl px-4 text-sm font-medium text-forest hover:bg-emerald-50">About</a>
+        <a href="#skills" class="mobile-link flex min-h-[44px] items-center rounded-xl px-4 text-sm font-medium text-forest hover:bg-emerald-50">Skills</a>
+        <a href="#projects" class="mobile-link flex min-h-[44px] items-center rounded-xl px-4 text-sm font-medium text-forest hover:bg-emerald-50">Projects</a>
+        <a href="#education" class="mobile-link flex min-h-[44px] items-center rounded-xl px-4 text-sm font-medium text-forest hover:bg-emerald-50">Education</a>
+        <a href="#hackathon" class="mobile-link flex min-h-[44px] items-center rounded-xl px-4 text-sm font-medium text-forest hover:bg-emerald-50">Hackathon</a>
+        <a href="#interests" class="mobile-link flex min-h-[44px] items-center rounded-xl px-4 text-sm font-medium text-forest hover:bg-emerald-50">Interests</a>
+        <a href="#contact" class="mobile-link flex min-h-[44px] items-center rounded-xl px-4 text-sm font-medium text-forest hover:bg-emerald-50">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. HERO SECTION -->
+    <section id="home" class="relative mx-auto max-w-6xl px-4 pb-24 pt-12 sm:px-6 sm:pt-18 lg:px-8 lg:pb-32 lg:pt-20">
+      <div class="grid items-center gap-12 lg:grid-cols-12">
+        <div class="lg:col-span-7">
+          <div id="hero-badge" class="mb-6 inline-flex items-center gap-2.5 rounded-full border border-emerald-700/20 bg-emerald-50/90 px-4 py-1.5 text-xs font-semibold text-forest">
+            <span class="relative flex h-2 w-2">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60"></span>
+              <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-600"></span>
+            </span>
+            <span>3rd Year B.Tech CSE &middot; Section A4 &middot; 2024 – 2028</span>
+          </div>
+
+          <h1 id="hero-name" aria-label="Shivam Mandloi" class="font-display text-5xl font-bold tracking-tight text-forest sm:text-6xl lg:text-[4.25rem] lg:leading-[1.06]">
+            Shivam Mandloi
+          </h1>
+
+          <div class="mt-4 overflow-hidden">
+            <p id="hero-headline" class="inline-block text-xl font-semibold text-emerald-800 sm:text-2xl">
+              B.Tech CSE Student | Aspiring Software Engineer
+            </p>
+            <div id="hero-headline-line" class="mt-2 h-[3px] w-28 origin-left rounded-full bg-gradient-to-r from-forest to-emerald-500"></div>
+          </div>
+
+          <div id="hero-intro" class="mt-6 max-w-xl space-y-1.5 text-base leading-relaxed text-moss sm:text-lg">
+            <p class="hero-intro-line">Third-year Computer Science Engineering student at <strong class="font-semibold text-forest">INDORE INSTITUTE OF SCIENCE OF TECHNOLOGY</strong>.</p>
+            <p class="hero-intro-line">Building practical web platforms and AI-assisted tools with clean architecture—</p>
+            <p class="hero-intro-line">including <strong class="font-semibold text-forest">Kapda Bazaar</strong> and <strong class="font-semibold text-forest">BIS360</strong>, working toward becoming a Software Engineer.</p>
+          </div>
+
+          <div id="hero-ctas" class="mt-9 flex flex-wrap items-center gap-3.5">
+            <a
+              href="#projects"
+              class="hero-cta-item magnetic-btn group inline-flex min-h-[48px] items-center justify-center gap-2.5 rounded-xl bg-forest px-6 py-3 text-sm font-semibold text-cream shadow-md shadow-forest/15 hover:bg-forestSoft focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2"
+            >
+              <span>Explore Projects</span>
+              <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+
+            <a
+              href="#contact"
+              class="hero-cta-item magnetic-btn inline-flex min-h-[48px] items-center justify-center rounded-xl border border-forest/25 bg-ivory px-6 py-3 text-sm font-semibold text-forest hover:border-emerald-600 hover:bg-emerald-50/70"
+            >
+              Get In Touch
+            </a>
+
+            <button
+              id="hero-resume-btn"
+              type="button"
+              class="hero-cta-item magnetic-btn inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-[#DFD6C7] bg-sand/70 px-5 py-3 text-sm font-medium text-forest hover:border-emerald-600/40 hover:bg-ivory"
+            >
+              <svg class="h-4 w-4 text-emerald-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              <span>Resume</span>
+            </button>
+          </div>
+
+          <div id="hero-socials" class="mt-8 flex flex-wrap items-center gap-3 border-t border-[#E5DDD0] pt-6">
+            <a
+              id="hero-github-btn"
+              href="https://github.com/shivammandloi7"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hero-social-item group inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-[#E5DDD0] bg-ivory px-4 py-2 text-sm font-medium text-forest transition-all hover:-translate-y-0.5 hover:border-emerald-600/40 hover:shadow-sm"
+            >
+              <svg class="h-4 w-4 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+              </svg>
+              <span>GitHub</span>
+            </a>
+
+            <a
+              id="hero-linkedin-btn"
+              href="https://www.linkedin.com/in/shivam-mandloi-563172337"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hero-social-item group inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-[#E5DDD0] bg-ivory px-4 py-2 text-sm font-medium text-forest transition-all hover:-translate-y-0.5 hover:border-emerald-600/40 hover:shadow-sm"
+            >
+              <svg class="h-4 w-4 text-emerald-700 transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+
+            <a
+              id="hero-email-btn"
+              href="mailto:shivam.mandloicse2024@indoreinstitute.com"
+              class="hero-social-item group inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-[#E5DDD0] bg-ivory px-4 py-2 text-sm font-medium text-forest transition-all hover:-translate-y-0.5 hover:border-emerald-600/40 hover:shadow-sm"
+            >
+              <svg class="h-4 w-4 text-emerald-700 transition-transform duration-300 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <span>Email</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- INTERACTIVE 3D-LAYERED ORBITAL HERO VISUAL -->
+        <div id="hero-visual-stage" class="lg:col-span-5">
+          <div id="hero-visual-3d" class="relative mx-auto flex min-h-[380px] max-w-md items-center justify-center rounded-[2rem] border border-[#E5DDD0] bg-gradient-to-br from-ivory via-cream to-emerald-50/60 p-6 shadow-xl shadow-forest/10 sm:min-h-[420px]">
+            <div aria-hidden="true" class="orbit-ring pointer-events-none absolute h-72 w-72 rounded-full border border-dashed border-emerald-700/25">
+              <span class="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rounded-full bg-emerald-600 shadow-sm shadow-emerald-600/50"></span>
+              <span class="absolute -bottom-1 left-1/2 h-2 w-2 -translate-x-1/2 rounded-full bg-forest"></span>
+            </div>
+
+            <div aria-hidden="true" class="orbit-ring-rev pointer-events-none absolute h-52 w-52 rounded-full border border-forest/15">
+              <span class="absolute left-0 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-emerald-600 bg-cream"></span>
+            </div>
+
+            <div class="hero-depth-layer absolute left-5 top-5 rounded-2xl border border-[#E5DDD0] bg-ivory/95 px-3.5 py-2.5 shadow-md backdrop-blur-md" data-depth="18">
+              <p class="font-mono text-[10px] uppercase tracking-wider text-emerald-700">Project 01</p>
+              <p class="font-display text-sm font-bold text-forest">Kapda Bazaar</p>
+            </div>
+
+            <div class="hero-depth-layer relative z-10 flex h-36 w-36 flex-col items-center justify-center rounded-3xl border border-emerald-400/25 bg-forest text-cream shadow-2xl shadow-forest/30" data-depth="32">
+              <span class="font-display text-4xl font-bold tracking-tight">SM</span>
+              <span class="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-emerald-300">B.Tech CSE</span>
+            </div>
+
+            <div class="hero-depth-layer absolute bottom-5 right-5 rounded-2xl border border-[#E5DDD0] bg-ivory/95 px-3.5 py-2.5 shadow-md backdrop-blur-md" data-depth="22">
+              <p class="font-mono text-[10px] uppercase tracking-wider text-emerald-700">Project 02</p>
+              <p class="font-display text-sm font-bold text-forest">BIS360</p>
+            </div>
+
+            <div class="hero-depth-layer absolute bottom-6 left-5 rounded-xl border border-emerald-700/20 bg-emerald-50/95 px-3 py-1.5 text-xs font-medium text-forest shadow-sm" data-depth="14">
+              🏏 Cricket &middot; 🏐 Volleyball
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ABOUT SECTION -->
+    <section id="about" class="border-t border-[#E5DDD0] bg-sand/60">
+      <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+        <div class="section-header mb-12">
+          <p class="font-mono text-xs font-medium uppercase tracking-widest text-emerald-700">01 / Profile</p>
+          <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-forest sm:text-4xl">About Shivam Mandloi</h2>
+          <div class="heading-underline mt-3 h-[3px] w-16 rounded-full bg-emerald-600"></div>
+        </div>
+
+        <div class="grid gap-8 lg:grid-cols-12">
+          <div id="about-text" class="space-y-4 text-base leading-relaxed text-moss lg:col-span-7">
+            <p class="about-para">
+              I am <strong class="font-semibold text-forest">Shivam Mandloi</strong>, a third-year B.Tech Computer Science Engineering student (Section A4) at <strong class="font-semibold text-forest">INDORE INSTITUTE OF SCIENCE OF TECHNOLOGY</strong> (2024 – 2028).
+            </p>
+            <p class="about-para">
+              My career goal is to become a <strong class="font-semibold text-forest">Software Engineer</strong>. I enjoy combining clean architecture with thoughtful visual polish—working on projects like <strong class="font-semibold text-forest">Kapda Bazaar</strong> and <strong class="font-semibold text-forest">BIS360</strong> while deepening my core CS fundamentals.
+            </p>
+            <p class="about-para">
+              Outside of software development, I stay active and competitive through <strong class="font-semibold text-forest">Cricket</strong> and <strong class="font-semibold text-forest">Volleyball</strong>.
+            </p>
+          </div>
+
+          <div id="about-card" class="lg:col-span-5">
+            <div class="editorial-card rounded-3xl p-6">
+              <div class="mb-4 flex items-center justify-between border-b border-[#ECE5D9] pb-3">
+                <span class="font-mono text-xs font-medium uppercase tracking-wider text-emerald-700">Profile Snapshot</span>
+                <span class="font-mono text-xs text-moss">2024 – 2028</span>
+              </div>
+              <dl class="divide-y divide-[#EFE9DF] text-sm">
+                <div class="about-row flex items-center justify-between gap-4 py-3 first:pt-0">
+                  <dt class="text-moss">Name</dt>
+                  <dd class="font-semibold text-forest">Shivam Mandloi</dd>
+                </div>
+                <div class="about-row flex items-center justify-between gap-4 py-3">
+                  <dt class="text-moss">Degree</dt>
+                  <dd class="font-medium text-forest">B.Tech CSE</dd>
+                </div>
+                <div class="about-row flex items-center justify-between gap-4 py-3">
+                  <dt class="text-moss">Year &amp; Section</dt>
+                  <dd class="font-medium text-forest">3rd Year &middot; Section A4</dd>
+                </div>
+                <div class="about-row flex items-center justify-between gap-4 py-3">
+                  <dt class="text-moss">Career Goal</dt>
+                  <dd class="font-semibold text-emerald-800">Software Engineer</dd>
+                </div>
+                <div class="about-row flex items-center justify-between gap-4 pt-3">
+                  <dt class="text-moss">Interests</dt>
+                  <dd class="font-medium text-forest">Cricket &middot; Volleyball</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SKILLS & TOOLKIT SECTION (ALWAYS VISIBLE BY DEFAULT + REPEATABLE MOTION) -->
+    <section id="skills" class="border-t border-[#E5DDD0] bg-cream">
+      <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+        <div class="section-header mb-12">
+          <p class="font-mono text-xs font-medium uppercase tracking-widest text-emerald-700">02 / Capabilities</p>
+          <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-forest sm:text-4xl">Skills &amp; Toolkit</h2>
+          <div class="heading-underline mt-3 h-[3px] w-16 rounded-full bg-emerald-600"></div>
+          <p class="mt-3 max-w-2xl text-sm text-moss">
+            Languages, web frameworks, developer tools, and core computer science foundations used across projects and coursework.
+          </p>
+        </div>
+
+        <div id="skills-grid" class="grid gap-6 sm:grid-cols-2"></div>
+      </div>
+    </section>
+
+    <!-- 4. PROJECTS SECTION -->
+    <section id="projects" class="border-t border-[#E5DDD0] bg-sand/60">
+      <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+        <div class="section-header mb-12">
+          <p class="font-mono text-xs font-medium uppercase tracking-widest text-emerald-700">03 / Selected Work</p>
+          <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-forest sm:text-4xl">Featured Projects</h2>
+          <div class="heading-underline mt-3 h-[3px] w-16 rounded-full bg-emerald-600"></div>
+          <p class="mt-3 max-w-2xl text-sm text-moss">
+            Original project visuals with distinct motion choreography, pointer-reactive parallax, 3D hover tilt, and sequential case-study modals.
+          </p>
+        </div>
+
+        <div id="projects-grid" class="grid gap-8 lg:grid-cols-2"></div>
+      </div>
+    </section>
+
+    <!-- 5. EDUCATION TIMELINE -->
+    <section id="education" class="border-t border-[#E5DDD0] bg-cream">
+      <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+        <div class="section-header mb-12">
+          <p class="font-mono text-xs font-medium uppercase tracking-widest text-emerald-700">04 / Academic Journey</p>
+          <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-forest sm:text-4xl">Education</h2>
+          <div class="heading-underline mt-3 h-[3px] w-16 rounded-full bg-emerald-600"></div>
+        </div>
+
+        <div id="education-timeline" class="relative space-y-8 pl-8 sm:pl-10">
+          <div class="absolute bottom-2 left-[7px] top-2 w-0.5 bg-[#DFD6C7]"></div>
+          <div id="edu-line-fill" class="absolute bottom-2 left-[7px] top-2 w-0.5 origin-top bg-emerald-600"></div>
+
+          <div class="edu-item relative">
+            <span class="edu-marker absolute -left-[33px] top-7 flex h-4 w-4 items-center justify-center rounded-full border-2 border-emerald-600 bg-cream sm:-left-[41px]">
+              <span class="h-1.5 w-1.5 rounded-full bg-emerald-600"></span>
+            </span>
+            <div class="editorial-card rounded-3xl p-6 sm:p-8">
+              <div class="flex flex-wrap items-start justify-between gap-4">
+                <div>
+                  <span class="inline-flex items-center rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 font-mono text-xs font-medium text-emerald-800">
+                    2024 – 2028
+                  </span>
+                  <h3 class="mt-3 font-display text-2xl font-bold text-forest">
+                    B.Tech — Computer Science Engineering
+                  </h3>
+                  <p class="mt-1.5 text-sm font-semibold tracking-wide text-forestSoft">
+                    INDORE INSTITUTE OF SCIENCE OF TECHNOLOGY
+                  </p>
+                </div>
+                <span class="inline-flex items-center rounded-xl border border-[#DFD6C7] bg-cream px-3.5 py-1.5 text-xs font-semibold text-forest">
+                  3rd Year &bull; Section A4
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. HACKATHON TIMELINE (STRICTLY PARTICIPATION — NO FAKE CERTIFICATE BUTTON) -->
+    <section id="hackathon" class="border-t border-[#E5DDD0] bg-sand/60">
+      <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+        <div class="section-header mb-12">
+          <p class="font-mono text-xs font-medium uppercase tracking-widest text-emerald-700">05 / Hackathons</p>
+          <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-forest sm:text-4xl">Hackathon Participation</h2>
+          <div class="heading-underline mt-3 h-[3px] w-16 rounded-full bg-emerald-600"></div>
+        </div>
+
+        <div id="hackathon-timeline" class="relative space-y-6 pl-8 sm:pl-10">
+          <div class="absolute bottom-2 left-[7px] top-2 w-0.5 bg-[#DFD6C7]"></div>
+          <div id="hack-line-fill" class="absolute bottom-2 left-[7px] top-2 w-0.5 origin-top bg-forest"></div>
+
+          <div class="hack-item relative">
+            <span class="hack-marker absolute -left-[33px] top-6 flex h-4 w-4 items-center justify-center rounded-full border-2 border-forest bg-cream sm:-left-[41px]">
+              <span class="h-1.5 w-1.5 rounded-full bg-emerald-600"></span>
+            </span>
+            <div class="editorial-card rounded-3xl p-6 sm:p-7">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-0.5 font-mono text-[11px] font-semibold text-emerald-800">
+                  Participation
+                </span>
+                <span class="font-mono text-xs text-moss">12 September 2026</span>
+              </div>
+              <h3 class="mt-3 font-display text-xl font-bold text-forest">
+                Internal Hackathon-2026
+              </h3>
+              <p class="text-xs font-semibold text-emerald-800">
+                Prelims for Smart India Hackathon-2026
+              </p>
+              <p class="mt-2 text-sm leading-relaxed text-moss">
+                Participated in Internal Hackathon-2026, the preliminary hackathon event for Smart India Hackathon-2026.
+              </p>
+              <p class="mt-2 text-xs text-moss">
+                Organizer: <span class="font-semibold text-forest">Indore Institute of Science &amp; Technology, Indore (M.P.)</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. INTERACTIVE INTERESTS SECTION -->
+    <section id="interests" class="border-t border-[#E5DDD0] bg-cream">
+      <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+        <div class="section-header mb-12">
+          <p class="font-mono text-xs font-medium uppercase tracking-widest text-emerald-700">06 / Beyond Code</p>
+          <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-forest sm:text-4xl">Interests</h2>
+          <div class="heading-underline mt-3 h-[3px] w-16 rounded-full bg-emerald-600"></div>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2">
+          <article id="interest-cricket" class="editorial-card group relative overflow-hidden rounded-3xl p-7">
+            <div class="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-emerald-500/[0.08] transition-transform duration-500 group-hover:scale-150"></div>
+            <div class="relative flex items-center gap-4">
+              <div class="flex h-14 w-14 items-center justify-center rounded-2xl border border-emerald-200 bg-emerald-50 text-3xl transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110" aria-hidden="true">
+                🏏
+              </div>
+              <div>
+                <h3 class="font-display text-xl font-bold text-forest">Cricket</h3>
+                <p class="font-mono text-xs text-emerald-700">Teamwork &middot; Strategy &middot; Focus</p>
+              </div>
+            </div>
+            <p class="relative mt-4 text-sm leading-relaxed text-moss">
+              Builds collaborative execution, tactical awareness, and calm decision-making under pressure.
+            </p>
+          </article>
+
+          <article id="interest-volleyball" class="editorial-card group relative overflow-hidden rounded-3xl p-7">
+            <div class="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-forest/[0.07] transition-transform duration-500 group-hover:scale-150"></div>
+            <div class="relative flex items-center gap-4">
+              <div class="flex h-14 w-14 items-center justify-center rounded-2xl border border-forest/15 bg-sand text-3xl transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110" aria-hidden="true">
+                🏐
+              </div>
+              <div>
+                <h3 class="font-display text-xl font-bold text-forest">Volleyball</h3>
+                <p class="font-mono text-xs text-emerald-700">Coordination &middot; Agility &middot; Communication</p>
+              </div>
+            </div>
+            <p class="relative mt-4 text-sm leading-relaxed text-moss">
+              Sharpens fast team coordination, trust in roles, and adaptive momentum during high-tempo play.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. CONTACT SECTION (3 VISIBLE CONTACT CARDS + COPY EMAIL + GENUINE MAILTO FORM) -->
+    <section id="contact" class="border-t border-[#E5DDD0] bg-sand/60">
+      <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+        <div class="section-header mb-12">
+          <p class="font-mono text-xs font-medium uppercase tracking-widest text-emerald-700">07 / Connect</p>
+          <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-forest sm:text-4xl">Get In Touch</h2>
+          <div class="heading-underline mt-3 h-[3px] w-16 rounded-full bg-emerald-600"></div>
+          <p class="mt-3 max-w-2xl text-sm text-moss">
+            Reach out directly to <strong class="font-semibold text-forest">Shivam Mandloi</strong> via email, GitHub, LinkedIn, or the pre-filled email form below.
+          </p>
+        </div>
+
+        <div class="grid gap-10 lg:grid-cols-12">
+          <div id="contact-cards" class="space-y-4 lg:col-span-5">
+            <!-- CARD 1: EMAIL -->
+            <div class="contact-card-item editorial-card rounded-2xl p-5">
+              <div class="flex items-start gap-4">
+                <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-700">
+                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <p class="font-mono text-[11px] font-medium uppercase tracking-wider text-emerald-700">Email</p>
+                  <a
+                    href="mailto:shivam.mandloicse2024@indoreinstitute.com"
+                    class="mt-1 block break-all text-sm font-semibold text-forest transition-colors hover:text-emerald-700 hover:underline"
+                  >
+                    shivam.mandloicse2024@indoreinstitute.com
+                  </a>
+                  <div class="mt-3 flex flex-wrap items-center gap-2">
+                    <a
+                      href="mailto:shivam.mandloicse2024@indoreinstitute.com"
+                      class="inline-flex min-h-[34px] items-center rounded-lg bg-forest px-3 py-1 text-xs font-semibold text-cream transition-colors hover:bg-forestSoft"
+                    >
+                      Email Me
+                    </a>
+                    <button
+                      id="copy-email-btn"
+                      type="button"
+                      class="inline-flex min-h-[34px] items-center gap-1.5 rounded-lg border border-[#DFD6C7] bg-cream px-3 py-1 text-xs font-medium text-forest transition-colors hover:border-emerald-600/50 hover:bg-emerald-50"
+                    >
+                      <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                      </svg>
+                      <span id="copy-email-label">Copy Email</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 2: GITHUB -->
+            <a
+              href="https://github.com/shivammandloi7"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-card-item editorial-card group flex items-center justify-between gap-4 rounded-2xl p-5"
+            >
+              <div class="flex min-w-0 items-center gap-4">
+                <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-forest/15 bg-sand text-forest transition-transform duration-300 group-hover:scale-105">
+                  <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                  </svg>
+                </div>
+                <div class="min-w-0">
+                  <p class="font-mono text-[11px] font-medium uppercase tracking-wider text-emerald-700">GitHub Profile</p>
+                  <p class="mt-0.5 truncate text-sm font-semibold text-forest">github.com/shivammandloi7</p>
+                </div>
+              </div>
+              <svg class="h-4 w-4 shrink-0 text-moss transition-transform duration-300 group-hover:translate-x-1 group-hover:text-emerald-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+
+            <!-- CARD 3: LINKEDIN -->
+            <a
+              href="https://www.linkedin.com/in/shivam-mandloi-563172337"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-card-item editorial-card group flex items-center justify-between gap-4 rounded-2xl p-5"
+            >
+              <div class="flex min-w-0 items-center gap-4">
+                <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-700 transition-transform duration-300 group-hover:scale-105">
+                  <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                  </svg>
+                </div>
+                <div class="min-w-0">
+                  <p class="font-mono text-[11px] font-medium uppercase tracking-wider text-emerald-700">LinkedIn Profile</p>
+                  <p class="mt-0.5 truncate text-sm font-semibold text-forest">linkedin.com/in/shivam-mandloi-563172337</p>
+                </div>
+              </div>
+              <svg class="h-4 w-4 shrink-0 text-moss transition-transform duration-300 group-hover:translate-x-1 group-hover:text-emerald-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+
+          <div class="lg:col-span-7">
+            <form id="contact-form" class="editorial-card space-y-5 rounded-3xl p-6 sm:p-8" novalidate>
+              <div class="grid gap-5 sm:grid-cols-2">
+                <div class="form-stagger">
+                  <label for="contact-name" class="block text-xs font-semibold uppercase tracking-wider text-forest">Name</label>
+                  <input id="contact-name" type="text" required placeholder="Your name" class="mt-2 block w-full rounded-xl border border-[#DFD6C7] bg-cream px-4 py-3 text-sm text-ink placeholder-moss/60 transition-colors focus:border-emerald-600 focus:bg-ivory focus:outline-none focus:ring-2 focus:ring-emerald-100" />
+                </div>
+                <div class="form-stagger">
+                  <label for="contact-email" class="block text-xs font-semibold uppercase tracking-wider text-forest">Email</label>
+                  <input id="contact-email" type="email" required placeholder="you@example.com" class="mt-2 block w-full rounded-xl border border-[#DFD6C7] bg-cream px-4 py-3 text-sm text-ink placeholder-moss/60 transition-colors focus:border-emerald-600 focus:bg-ivory focus:outline-none focus:ring-2 focus:ring-emerald-100" />
+                </div>
+              </div>
+              <div class="form-stagger">
+                <label for="contact-message" class="block text-xs font-semibold uppercase tracking-wider text-forest">Message</label>
+                <textarea id="contact-message" rows="4" required placeholder="Share your project or opportunity..." class="mt-2 block w-full rounded-xl border border-[#DFD6C7] bg-cream px-4 py-3 text-sm text-ink placeholder-moss/60 transition-colors focus:border-emerald-600 focus:bg-ivory focus:outline-none focus:ring-2 focus:ring-emerald-100"></textarea>
+              </div>
+              <div class="form-stagger flex flex-wrap items-center justify-between gap-3 pt-1">
+                <button type="submit" class="magnetic-btn group inline-flex min-h-[46px] items-center gap-2 rounded-xl bg-forest px-6 py-2.5 text-sm font-semibold text-cream shadow-sm hover:bg-forestSoft">
+                  <span>Open in Email App</span>
+                  <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </button>
+                <span class="text-xs text-moss">Opens your email client pre-addressed to Shivam.</span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="site-footer" class="border-t border-[#E5DDD0] bg-ivory">
+    <div class="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-4 py-10 sm:flex-row sm:items-center sm:px-6 lg:px-8">
+      <div>
+        <p class="font-display text-lg font-bold text-forest">Shivam Mandloi</p>
+        <p class="mt-1 text-sm text-moss">B.Tech CSE Student | Aspiring Software Engineer</p>
+      </div>
+      <div class="flex flex-wrap items-center gap-5 text-sm font-medium text-moss">
+        <a href="https://github.com/shivammandloi7" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-emerald-700">GitHub</a>
+        <a href="https://www.linkedin.com/in/shivam-mandloi-563172337" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-emerald-700">LinkedIn</a>
+        <a href="mailto:shivam.mandloicse2024@indoreinstitute.com" class="transition-colors hover:text-emerald-700">Email</a>
+      </div>
+    </div>
+    <div class="border-t border-[#EFE9DF] px-4 py-4 text-center text-xs text-moss">
+      &copy; 2026 Shivam Mandloi
+    </div>
+  </footer>
+
+  <!-- ANIMATED BACK-TO-TOP CONTROL -->
+  <button
+    id="back-to-top"
+    type="button"
+    aria-label="Back to top"
+    class="fixed bottom-6 right-6 z-40 inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-emerald-700/20 bg-forest text-cream shadow-lg shadow-forest/20 hover:bg-forestSoft focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600"
+  >
+    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
+
+  <!-- SMOOTH ANIMATED PROJECT MODAL -->
+  <div id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" class="fixed inset-0 z-50 hidden items-center justify-center bg-forest/45 p-4 backdrop-blur-sm">
+    <div id="modal-panel" class="relative flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden rounded-3xl border border-[#E5DDD0] bg-ivory shadow-2xl">
+      <div class="flex items-center justify-between border-b border-[#ECE5D9] bg-cream px-6 py-4">
+        <div>
+          <p id="modal-category" class="font-mono text-xs font-medium uppercase tracking-wider text-emerald-700"></p>
+          <h3 id="modal-title" class="mt-0.5 font-display text-2xl font-bold text-forest"></h3>
+        </div>
+        <button id="modal-close" type="button" aria-label="Close modal" class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#DFD6C7] bg-ivory text-forest transition-colors hover:border-emerald-600/40 hover:bg-emerald-50">
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div id="modal-body" class="space-y-5 overflow-y-auto px-6 py-6 text-sm text-moss"></div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" role="status" aria-live="polite" class="pointer-events-none fixed bottom-6 left-6 z-50 max-w-sm translate-y-4 opacity-0 transition-all duration-300">
+    <div class="rounded-2xl border border-emerald-700/20 bg-forest px-4 py-3 text-sm font-medium text-cream shadow-xl">
+      <p id="toast-msg"></p>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // CENTRAL EDITABLE DATA FOR SHIVAM MANDLOI
+    // =========================================================================
+    const SHIVAM_PROFILE = {
+      name: 'Shivam Mandloi',
+      degree: 'B.Tech Computer Science Engineering',
+      year: '3rd Year',
+      section: 'A4',
+      college: 'INDORE INSTITUTE OF SCIENCE OF TECHNOLOGY',
+      duration: '2024 - 2028',
+      careerGoal: 'Software Engineer',
+      email: 'shivam.mandloicse2024@indoreinstitute.com',
+      github: 'https://github.com/shivammandloi7',
+      linkedin: 'https://www.linkedin.com/in/shivam-mandloi-563172337',
+      resumePath: './resume.pdf',
+    };
+
+    const SHIVAM_SKILLS = [
+      {
+        category: 'Programming Languages',
+        items: ['C', 'C++', 'Python', 'Java', 'JavaScript', 'SQL'],
+      },
+      {
+        category: 'Web & UI Engineering',
+        items: ['HTML5', 'CSS3', 'JavaScript', 'React', 'Next.js', 'FastAPI', 'Streamlit', 'Tailwind CSS'],
+      },
+      {
+        category: 'Tools & Workflow',
+        items: ['Git', 'GitHub', 'Vercel', 'Render', 'Linux', 'VS Code', 'IntelliJ IDEA'],
+      },
+      {
+        category: 'Core Foundations',
+        items: [
+          'Data Structures & Algorithms',
+          'Operating Systems',
+          'DBMS',
+          'Object-Oriented Programming',
+          'Numerical Methods',
+        ],
+      },
+    ];
+
+    const SHIVAM_PROJECTS = [
+      {
+        id: 'kapda-bazaar',
+        title: 'Kapda Bazaar',
+        category: 'B2B Textile Supply Chain OS',
+        image: './assets/shivam-kapda-bazaar.webp',
+        imageAlt: '3D editorial illustration of Kapda Bazaar B2B textile supply chain with cotton yarn spools, woven fabrics, and emerald procurement network lines',
+        motionStyle: 'textile',
+        description:
+          'A B2B textile sourcing and procurement platform designed for mills, suppliers, and industrial buyers with textile-specific product discovery, AI-oriented supplier matching, product comparison, supplier verification concepts, and structured RFQ-to-order workflows.',
+        tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel'],
+        highlights: [
+          'Textile-specific product discovery (Material, Composition, GSM, Finish, Quantity, Price)',
+          'AI-oriented supplier matching & product comparison',
+          'Supplier verification concepts & multi-role dashboards',
+          'Structured procurement flow: Requirement → Matching → Compare → RFQ → Quotes → Sample → Order',
+        ],
+        liveUrl: 'https://kapda-bazaar-six.vercel.app/',
+        githubUrl: 'https://github.com/hub211045-hue/KAPDA-BAZAAR.git',
+        details: {
+          overview: 'Kapda Bazaar simplifies B2B textile sourcing by structuring material discovery, supplier evaluation, quotation comparison, and RFQ-to-order workflows for mills, suppliers, and industrial buyers.',
+          architecture: 'Modular web application architecture with Next.js, TypeScript, Tailwind CSS, role-based workflows (Buyer, Seller, Admin, Logistics, Quality), and Vercel deployment.',
+        },
+      },
+      {
+        id: 'bis360',
+        title: 'BIS360',
+        category: 'AI & ML / Full-Stack',
+        image: './assets/shivam-bis360.webp',
+        imageAlt: '3D editorial illustration of BIS360 AI compliance and Indian Standards assistant with floating digital standards documents and emerald scanning beam',
+        motionStyle: 'compliance',
+        description:
+          'AI-powered conversational assistant for Indian Standards supporting compliance verification against IS 12269, IS 13252, and IS 16046, a guided lab-testing roadmap, and structured document retrieval.',
+        tags: ['Python', 'FastAPI', 'Gemini API', 'Render'],
+        highlights: [
+          'AI-powered conversational assistant for Indian Standards',
+          'Compliance verification against IS 12269, IS 13252, and IS 16046',
+          'Guided lab-testing roadmap for compliance workflows',
+          'Structured document retrieval support',
+        ],
+        liveUrl: '',
+        githubUrl: '',
+        details: {
+          overview: 'BIS360 is an AI-powered conversational assistant built for navigating Indian Standards, enabling compliance verification against IS 12269, IS 13252, and IS 16046 alongside a guided lab-testing roadmap and document retrieval support.',
+          architecture: 'Python and FastAPI backend integrated with the Gemini API for standards retrieval and conversational guidance, deployed on Render.',
+        },
+      },
+    ];
+
+    let toastTimer = null;
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      document.getElementById('toast-msg').textContent = msg;
+      t.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+      t.classList.add('opacity-100', 'translate-y-0');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        t.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+        t.classList.remove('opacity-100', 'translate-y-0');
+      }, 3800);
+    }
+
+    function renderSkills() {
+      const grid = document.getElementById('skills-grid');
+      grid.innerHTML = SHIVAM_SKILLS.map((g) => `
+        <div class="skill-card editorial-card flex min-h-[172px] flex-col justify-between p-6 sm:p-7">
+          <div>
+            <div class="flex items-center justify-between gap-3">
+              <h3 class="font-display text-lg font-bold text-forest">${g.category}</h3>
+              <span class="rounded-full bg-emerald-100 px-2.5 py-0.5 font-mono text-[11px] font-semibold text-forest">${g.items.length}</span>
+            </div>
+            <div class="skill-badges-wrap">
+              ${g.items
+                .map((s) => `<span class="skill-badge">${s}</span>`)
+                .join('')}
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function buildProjectOverlay(motionStyle) {
+      if (motionStyle === 'textile') {
+        return `
+          <svg aria-hidden="true" class="img-parallax-fg pointer-events-none absolute inset-0 z-[2] h-full w-full opacity-75" viewBox="0 0 640 360" fill="none" preserveAspectRatio="none">
+            <path d="M-20 290 C 140 210, 280 330, 440 230 S 600 180, 660 220" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.65" class="textile-dash" />
+            <path d="M-10 110 C 160 170, 320 60, 480 140 S 610 100, 660 80" stroke="#0f3428" stroke-width="1.2" stroke-opacity="0.35" class="textile-dash" />
+            <circle cx="150" cy="248" r="5" fill="#059669" class="textile-node-float" />
+            <circle cx="465" cy="134" r="4.5" fill="#10b981" class="textile-node-float" />
+            <rect x="520" y="255" width="24" height="24" rx="6" stroke="#059669" stroke-opacity="0.55" stroke-width="1.5" class="textile-node-float" />
+          </svg>
+        `;
+      }
+      return `
+        <div aria-hidden="true" class="img-parallax-fg pointer-events-none absolute inset-0 z-[2] overflow-hidden">
+          <div class="bis-scan-beam absolute inset-x-0 top-0 h-14 border-b border-emerald-300/60 bg-gradient-to-b from-transparent via-emerald-400/30 to-transparent"></div>
+          <div class="bis-pulse absolute right-6 top-6 h-2.5 w-2.5 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.9)]"></div>
+          <div class="bis-pulse absolute bottom-7 left-7 h-2 w-2 rounded-full bg-emerald-300" style="animation-delay: 1.1s;"></div>
+        </div>
+      `;
+    }
+
+    function renderProjects() {
+      const grid = document.getElementById('projects-grid');
+      grid.innerHTML = SHIVAM_PROJECTS.map((p) => {
+        const liveBtn = p.liveUrl
+          ? `<a href="${p.liveUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-[42px] items-center gap-1.5 rounded-xl border border-emerald-700/25 bg-emerald-50/80 px-4 py-2 text-xs font-semibold text-forest transition-colors hover:border-emerald-600 hover:bg-emerald-100">
+              <span>Live Demo</span>
+              <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+            </a>`
+          : '';
+        const repoBtn = p.githubUrl
+          ? `<a href="${p.githubUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-[42px] items-center rounded-xl border border-[#DFD6C7] bg-ivory px-4 py-2 text-xs font-medium text-moss transition-colors hover:border-emerald-600/50 hover:text-forest">GitHub</a>`
+          : '';
+
+        return `
+          <article class="project-card tilt-card editorial-card group relative flex flex-col overflow-hidden rounded-3xl" data-motion="${p.motionStyle}">
+            <div class="tilt-card-sheen"></div>
+            <div class="project-img-reveal relative aspect-[16/9] w-full overflow-hidden border-b border-[#E5DDD0] bg-forest/5" data-reveal-style="${p.motionStyle}">
+              <img src="${p.image}" alt="${p.imageAlt}" class="project-img-inner h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
+              ${buildProjectOverlay(p.motionStyle)}
+              <span class="pointer-events-none absolute left-4 top-4 z-10 rounded-full border border-white/80 bg-ivory/92 px-3.5 py-1 font-mono text-[11px] font-semibold text-forest shadow-sm backdrop-blur-md">
+                ${p.category}
+              </span>
+            </div>
+            <div class="relative z-10 flex flex-1 flex-col p-6 sm:p-7">
+              <h3 class="font-display text-2xl font-bold text-forest">${p.title}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-moss">${p.description}</p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                ${p.tags
+                  .map(
+                    (t) =>
+                      `<span class="rounded-lg border border-emerald-700/20 bg-emerald-50 px-2.5 py-1 font-mono text-[11px] font-semibold text-forest">${t}</span>`
+                  )
+                  .join('')}
+              </div>
+              <ul class="mt-5 space-y-2 border-t border-[#EFE9DF] pt-4 text-xs text-moss">
+                ${p.highlights
+                  .map(
+                    (h) =>
+                      `<li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-600"></span><span>${h}</span></li>`
+                  )
+                  .join('')}
+              </ul>
+              <div class="mt-6 flex flex-wrap items-center gap-3 pt-2">
+                <button type="button" data-preview="${p.id}" class="magnetic-btn group/btn inline-flex min-h-[42px] items-center gap-2 rounded-xl bg-forest px-4 py-2 text-xs font-semibold text-cream hover:bg-forestSoft">
+                  <span>View Details</span>
+                  <svg class="h-3.5 w-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </button>
+                ${liveBtn}
+                ${repoBtn}
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      grid.querySelectorAll('[data-preview]').forEach((b) =>
+        b.addEventListener('click', () => openModal(b.getAttribute('data-preview')))
+      );
+    }
+
+    function openModal(id) {
+      const p = SHIVAM_PROJECTS.find((x) => x.id === id);
+      if (!p) return;
+      document.getElementById('modal-category').textContent = p.category;
+      document.getElementById('modal-title').textContent = p.title;
+      document.getElementById('modal-body').innerHTML = `
+        <div class="modal-seq overflow-hidden rounded-2xl border border-[#E5DDD0]">
+          <img src="${p.image}" alt="${p.imageAlt}" class="aspect-[16/9] w-full object-cover" />
+        </div>
+        <div class="modal-seq">
+          <h4 class="font-display text-base font-bold text-forest">Overview</h4>
+          <p class="mt-1.5 leading-relaxed">${p.details.overview}</p>
+        </div>
+        <div class="modal-seq">
+          <h4 class="font-display text-base font-bold text-forest">Key Highlights</h4>
+          <ul class="mt-2 grid gap-2 sm:grid-cols-2">
+            ${p.highlights
+              .map(
+                (h) =>
+                  `<li class="flex items-start gap-2 rounded-xl border border-[#ECE5D9] bg-cream px-3.5 py-2.5 text-xs text-forest"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-600"></span><span>${h}</span></li>`
+              )
+              .join('')}
+          </ul>
+        </div>
+        <div class="modal-seq">
+          <h4 class="font-display text-base font-bold text-forest">Architecture &amp; Notes</h4>
+          <p class="mt-1.5 leading-relaxed">${p.details.architecture}</p>
+        </div>
+      `;
+
+      const modal = document.getElementById('project-modal');
+      const panel = document.getElementById('modal-panel');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduced && typeof gsap !== 'undefined') {
+        gsap.fromTo(modal, { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out' });
+        gsap.fromTo(panel, { opacity: 0, scale: 0.94, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 0.34, ease: 'power3.out' });
+        gsap.fromTo(
+          panel.querySelectorAll('.modal-seq'),
+          { opacity: 0, y: 14 },
+          { opacity: 1, y: 0, duration: 0.38, stagger: 0.06, delay: 0.1, ease: 'power2.out' }
+        );
+      }
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('project-modal');
+      const panel = document.getElementById('modal-panel');
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduced && typeof gsap !== 'undefined') {
+        gsap.to(panel, { opacity: 0, scale: 0.95, y: 12, duration: 0.22, ease: 'power2.in' });
+        gsap.to(modal, {
+          opacity: 0,
+          duration: 0.22,
+          onComplete: () => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+          },
+        });
+      } else {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function splitNameIntoChars() {
+      const el = document.getElementById('hero-name');
+      const text = el.textContent.trim();
+      el.innerHTML = text
+        .split('')
+        .map((ch) =>
+          ch === ' '
+            ? '<span class="inline-block w-3 sm:w-4">&nbsp;</span>'
+            : `<span class="char-wrap"><span class="char-inner">${ch}</span></span>`
+        )
+        .join('');
+    }
+
+    function copyTextToClipboard(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(text).catch(() => fallbackCopy(text));
+      }
+      return fallbackCopy(text);
+    }
+
+    function fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch (_) {}
+      document.body.removeChild(ta);
+      return Promise.resolve();
+    }
+
+    function initGSAPAnimations() {
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const isDesktop = window.matchMedia('(min-width: 1024px) and (hover: hover)').matches;
+
+      if (reduced || typeof gsap === 'undefined') {
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Helper: runs a replayable fromTo animation ONLY on enter & enterBack.
+      // Elements remain visible (opacity: 1) by default so NO element can EVER be stuck invisible!
+      function onScrollReplay(triggerEl, playFn, start = 'top 92%', end = 'bottom 8%') {
+        ScrollTrigger.create({
+          trigger: triggerEl,
+          start,
+          end,
+          onEnter: () => playFn(1),
+          onEnterBack: () => playFn(-1),
+        });
+      }
+
+      // 1. Top scroll progress bar
+      gsap.to('#scroll-progress', {
+        scaleX: 1,
+        ease: 'none',
+        scrollTrigger: { trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: 0.15 },
+      });
+
+      // 2. Hero Master Timeline (plays immediately on load, never leaves anything hidden)
+      splitNameIntoChars();
+      const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      heroTl
+        .fromTo('#hero-badge', { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.42 })
+        .fromTo('#hero-name .char-inner', { yPercent: 110, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.62, stagger: 0.025, ease: 'power4.out' }, '-=0.25')
+        .fromTo('#hero-headline', { yPercent: 95, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.52 }, '-=0.32')
+        .fromTo('#hero-headline-line', { scaleX: 0 }, { scaleX: 1, duration: 0.48 }, '-=0.34')
+        .fromTo('.hero-intro-line', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.46, stagger: 0.08 }, '-=0.28')
+        .fromTo('.hero-cta-item', { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.42, stagger: 0.07 }, '-=0.24')
+        .fromTo('.hero-social-item', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.36, stagger: 0.06 }, '-=0.24')
+        .fromTo('#hero-visual-3d', { opacity: 0, scale: 0.93, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 0.68 }, '-=0.65');
+
+      // 3. Section Headings + Underlines (bidirectional replay)
+      gsap.utils.toArray('.section-header').forEach((header) => {
+        const texts = header.querySelectorAll('p, h2');
+        const line = header.querySelector('.heading-underline');
+        onScrollReplay(header, (dir) => {
+          gsap.fromTo(texts, { opacity: 0.2, y: dir * 18 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.06, ease: 'power3.out', overwrite: 'auto' });
+          if (line) {
+            gsap.fromTo(line, { scaleX: 0 }, { scaleX: 1, duration: 0.55, ease: 'power3.out', overwrite: 'auto' });
+          }
+        });
+      });
+
+      // 4. About (bidirectional replay)
+      onScrollReplay('#about-text', () => {
+        gsap.fromTo('.about-para', { opacity: 0.2, x: -22 }, { opacity: 1, x: 0, duration: 0.54, stagger: 0.09, ease: 'power3.out', overwrite: 'auto' });
+      });
+      onScrollReplay('#about-card', () => {
+        gsap.fromTo('#about-card', { opacity: 0.25, x: 24 }, { opacity: 1, x: 0, duration: 0.56, ease: 'power3.out', overwrite: 'auto' });
+        gsap.fromTo('.about-row', { opacity: 0.25, y: 10 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.06, delay: 0.1, overwrite: 'auto' });
+      });
+
+      // 5. Skills Cards & Badges — ALWAYS VISIBLE BY DEFAULT, smooth staggered motion on enter & enterBack
+      gsap.utils.toArray('.skill-card').forEach((card, i) => {
+        const badges = card.querySelectorAll('.skill-badge');
+        onScrollReplay(card, (dir) => {
+          gsap.fromTo(card, { opacity: 0.35, y: dir * 22 }, { opacity: 1, y: 0, duration: 0.48, delay: (i % 2) * 0.06, ease: 'power3.out', overwrite: 'auto' });
+          gsap.fromTo(badges, { opacity: 0.3, y: dir * 10, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.34, stagger: 0.035, delay: 0.08, ease: 'power2.out', overwrite: 'auto' });
+        });
+      });
+
+      // 6. Projects: Distinct Image Clip-Path Reveals per Project (bidirectional replay)
+      gsap.utils.toArray('.project-card').forEach((card, i) => {
+        const imgBox = card.querySelector('.project-img-reveal');
+        const imgEl = card.querySelector('.project-img-inner');
+        const style = imgBox ? imgBox.getAttribute('data-reveal-style') : 'textile';
+        const startClip = style === 'compliance' ? 'inset(0% 100% 0% 0%)' : 'inset(100% 0% 0% 0%)';
+
+        onScrollReplay(card, (dir) => {
+          gsap.fromTo(card, { opacity: 0.3, y: dir * 26 }, { opacity: 1, y: 0, duration: 0.58, delay: i * 0.08, ease: 'power3.out', overwrite: 'auto' });
+          if (imgBox) {
+            gsap.fromTo(imgBox, { clipPath: startClip }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.78, delay: 0.08, ease: 'power4.out', overwrite: 'auto' });
+          }
+          if (imgEl) {
+            gsap.fromTo(imgEl, { scale: 1.08 }, { scale: 1, duration: 0.84, delay: 0.08, ease: 'power3.out', overwrite: 'auto' });
+          }
+        });
+      });
+
+      // 7. Education Timeline (scrubbed vertical progress line + replayable cards)
+      gsap.fromTo(
+        '#edu-line-fill',
+        { scaleY: 0 },
+        { scaleY: 1, ease: 'none', scrollTrigger: { trigger: '#education-timeline', start: 'top 84%', end: 'bottom 60%', scrub: 0.35 } }
+      );
+      onScrollReplay('#education-timeline', () => {
+        gsap.fromTo('.edu-item', { opacity: 0.25, x: 22 }, { opacity: 1, x: 0, duration: 0.56, stagger: 0.12, ease: 'power3.out', overwrite: 'auto' });
+      });
+
+      // 8. Hackathon Timeline (bidirectional replay)
+      onScrollReplay('#hackathon-timeline', () => {
+        gsap.fromTo('#hack-line-fill', { scaleY: 0 }, { scaleY: 1, duration: 0.72, ease: 'power3.out', overwrite: 'auto' });
+        gsap.fromTo('.hack-marker', { scale: 0.3 }, { scale: 1, duration: 0.42, stagger: 0.12, ease: 'back.out(1.7)', overwrite: 'auto' });
+        gsap.fromTo('.hack-item .editorial-card', { opacity: 0.25, y: 20 }, { opacity: 1, y: 0, duration: 0.52, stagger: 0.12, ease: 'power3.out', overwrite: 'auto' });
+      });
+
+      // 9. Interests (bidirectional opposing horizontal reveals)
+      onScrollReplay('#interests', () => {
+        gsap.fromTo('#interest-cricket', { opacity: 0.25, x: -24 }, { opacity: 1, x: 0, duration: 0.56, ease: 'power3.out', overwrite: 'auto' });
+        gsap.fromTo('#interest-volleyball', { opacity: 0.25, x: 24 }, { opacity: 1, x: 0, duration: 0.56, ease: 'power3.out', overwrite: 'auto' });
+      });
+
+      // 10. Contact Cards + Form + Footer (bidirectional replay)
+      onScrollReplay('#contact-cards', () => {
+        gsap.fromTo('.contact-card-item', { opacity: 0.25, x: -20 }, { opacity: 1, x: 0, duration: 0.5, stagger: 0.09, ease: 'power3.out', overwrite: 'auto' });
+      });
+      onScrollReplay('#contact-form', () => {
+        gsap.fromTo('.form-stagger', { opacity: 0.25, y: 16 }, { opacity: 1, y: 0, duration: 0.46, stagger: 0.07, ease: 'power3.out', overwrite: 'auto' });
+      });
+      onScrollReplay('#site-footer', () => {
+        gsap.fromTo('#site-footer', { opacity: 0.4, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out', overwrite: 'auto' });
+      }, 'top 97%', 'bottom 0%');
+
+      // 11. Desktop-only Parallax + 3D Hero Stage + 3D Project Tilt + Internal Image Parallax + Magnetic Buttons + Cursor Glow
+      if (isDesktop) {
+        gsap.to('#geo-shape-1', {
+          y: 110,
+          rotation: 28,
+          ease: 'none',
+          scrollTrigger: { trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: 0.6 },
+        });
+        gsap.to('#geo-shape-2', {
+          y: -90,
+          ease: 'none',
+          scrollTrigger: { trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: 0.6 },
+        });
+
+        const stage = document.getElementById('hero-visual-stage');
+        const visual3d = document.getElementById('hero-visual-3d');
+        const layers = visual3d.querySelectorAll('.hero-depth-layer');
+        let targetRx = 0, targetRy = 0, currRx = 0, currRy = 0;
+
+        stage.addEventListener('mousemove', (e) => {
+          const rect = stage.getBoundingClientRect();
+          const nx = (e.clientX - rect.left) / rect.width - 0.5;
+          const ny = (e.clientY - rect.top) / rect.height - 0.5;
+          targetRy = nx * 14;
+          targetRx = -ny * 14;
+        });
+        stage.addEventListener('mouseleave', () => { targetRx = 0; targetRy = 0; });
+
+        const glow = document.getElementById('cursor-glow');
+        let gx = -500, gy = -500, tx = -500, ty = -500;
+        window.addEventListener('mousemove', (e) => {
+          tx = e.clientX - 170;
+          ty = e.clientY - 170;
+          glow.style.opacity = '1';
+        }, { passive: true });
+
+        function tick() {
+          currRx += (targetRx - currRx) * 0.08;
+          currRy += (targetRy - currRy) * 0.08;
+          visual3d.style.transform = `rotateX(${currRx.toFixed(2)}deg) rotateY(${currRy.toFixed(2)}deg)`;
+          layers.forEach((layer) => {
+            const d = Number(layer.getAttribute('data-depth') || 12);
+            layer.style.transform = `translate3d(${(currRy * d * 0.06).toFixed(1)}px, ${(-currRx * d * 0.06).toFixed(1)}px, ${d}px)`;
+          });
+
+          gx += (tx - gx) * 0.12;
+          gy += (ty - gy) * 0.12;
+          glow.style.transform = `translate3d(${gx.toFixed(1)}px, ${gy.toFixed(1)}px, 0)`;
+          requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+
+        document.querySelectorAll('.tilt-card').forEach((card) => {
+          const fg = card.querySelector('.img-parallax-fg');
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width;
+            const y = (e.clientY - rect.top) / rect.height;
+            card.style.setProperty('--mx', `${(x * 100).toFixed(1)}%`);
+            card.style.setProperty('--my', `${(y * 100).toFixed(1)}%`);
+            gsap.to(card, {
+              rotationX: (0.5 - y) * 6,
+              rotationY: (x - 0.5) * 6,
+              y: -4,
+              transformPerspective: 950,
+              duration: 0.3,
+              ease: 'power2.out',
+              overwrite: 'auto',
+            });
+            if (fg) {
+              fg.style.transform = `translate3d(${((x - 0.5) * -14).toFixed(1)}px, ${((y - 0.5) * -10).toFixed(1)}px, 0)`;
+            }
+          });
+          card.addEventListener('mouseleave', () => {
+            gsap.to(card, { rotationX: 0, rotationY: 0, y: 0, duration: 0.45, ease: 'power3.out', overwrite: 'auto' });
+            if (fg) fg.style.transform = '';
+          });
+        });
+
+        document.querySelectorAll('.magnetic-btn').forEach((btn) => {
+          btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const dx = (e.clientX - rect.left - rect.width / 2) * 0.18;
+            const dy = (e.clientY - rect.top - rect.height / 2) * 0.18;
+            gsap.to(btn, { x: dx, y: dy, duration: 0.22, ease: 'power2.out', overwrite: 'auto' });
+          });
+          btn.addEventListener('mouseleave', () => {
+            gsap.to(btn, { x: 0, y: 0, duration: 0.35, ease: 'power3.out', overwrite: 'auto' });
+          });
+        });
+      }
+
+      window.addEventListener('load', () => ScrollTrigger.refresh());
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderSkills();
+      renderProjects();
+      initGSAPAnimations();
+
+      const navLinks = document.querySelectorAll('[data-nav]');
+      const sections = ['home', 'about', 'skills', 'projects', 'education', 'hackathon', 'interests', 'contact']
+        .map((id) => document.getElementById(id))
+        .filter(Boolean);
+
+      if ('IntersectionObserver' in window) {
+        const secObs = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                navLinks.forEach((l) => l.classList.toggle('active', l.getAttribute('data-nav') === entry.target.id));
+              }
+            });
+          },
+          { rootMargin: '-32% 0px -56% 0px' }
+        );
+        sections.forEach((s) => secObs.observe(s));
+      }
+
+      const nav = document.getElementById('site-nav');
+      const btt = document.getElementById('back-to-top');
+      window.addEventListener(
+        'scroll',
+        () => {
+          const y = window.scrollY;
+          nav.classList.toggle('shadow-md', y > 24);
+          nav.classList.toggle('bg-[#FFFDF9]/95', y > 24);
+          btt.classList.toggle('visible', y > 420);
+        },
+        { passive: true }
+      );
+      btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const openI = document.getElementById('icon-open');
+      const closeI = document.getElementById('icon-close');
+      const setOpen = (state) => {
+        menu.classList.toggle('open', state);
+        openI.classList.toggle('hidden', state);
+        closeI.classList.toggle('hidden', !state);
+        btn.setAttribute('aria-expanded', String(state));
+      };
+      btn.addEventListener('click', () => setOpen(!menu.classList.contains('open')));
+      document.querySelectorAll('.mobile-link').forEach((l) => l.addEventListener('click', () => setOpen(false)));
+
+      document.getElementById('modal-close').addEventListener('click', closeModal);
+      document.getElementById('project-modal').addEventListener('click', (e) => {
+        if (e.target.id === 'project-modal') closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+      });
+
+      const copyBtn = document.getElementById('copy-email-btn');
+      const copyLabel = document.getElementById('copy-email-label');
+      copyBtn.addEventListener('click', () => {
+        copyTextToClipboard(SHIVAM_PROFILE.email).then(() => {
+          copyLabel.textContent = 'Copied!';
+          showToast('Email copied: ' + SHIVAM_PROFILE.email);
+          setTimeout(() => { copyLabel.textContent = 'Copy Email'; }, 2200);
+        });
+      });
+
+      document.getElementById('hero-resume-btn').addEventListener('click', () =>
+        showToast('Place Shivam Mandloi’s resume PDF at ./resume.pdf to enable direct download.')
+      );
+
+      document.getElementById('contact-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('contact-name').value.trim();
+        const email = document.getElementById('contact-email').value.trim();
+        const message = document.getElementById('contact-message').value.trim();
+        if (!name || !email || !message) {
+          showToast('Please fill in your name, email, and message.');
+          return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          showToast('Please enter a valid email address.');
+          return;
+        }
+        const subject = encodeURIComponent('Portfolio Inquiry from ' + name);
+        const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message);
+        window.location.href = 'mailto:' + SHIVAM_PROFILE.email + '?subject=' + subject + '&body=' + body;
+        showToast('Opening your email client pre-addressed to Shivam Mandloi.');
+      });
+    });
+  </script>
+</body>
+</html>
